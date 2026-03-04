@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCD02 | Tugas02 - Riset Pengguna Dimas Kurniawan - Cakrawala University</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #f9f2e7 0%, #fff3e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* elemen dekoratif latar */
+        .shape-blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 140, 56, 0.05);
+            border-radius: 70% 30% 60% 40% / 40% 60% 30% 70%;
+            top: -50px;
+            left: -50px;
+            z-index: 0;
+            animation: floatBlob 18s infinite alternate ease-in-out;
+        }
+        .shape-blob2 {
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 112, 243, 0.03);
+            border-radius: 40% 60% 70% 30% / 50% 40% 60% 50%;
+            bottom: -80px;
+            right: -30px;
+            position: absolute;
+            z-index: 0;
+            animation: floatBlob 20s infinite alternate-reverse;
+        }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(40px, 30px) rotate(10deg); }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 48px;
+            box-shadow: 0 35px 75px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 1100px;
+            z-index: 10;
+            border: 1px solid rgba(255,255,255,0.4);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card-inner {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* panel kiri – branding HCD */
+        .brand-panel {
+            flex: 1 1 300px;
+            background: linear-gradient(145deg, #1e2b3c, #14222e);
+            padding: 3rem 2.5rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            isolation: isolate;
+        }
+
+        .brand-panel::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(255,140,56,0.15), transparent 60%);
+            z-index: -1;
+        }
+
+        /* Logo Cakrawala University dengan gambar */
+        .university-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,140,56,0.3);
+        }
+
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(255,140,56,0.3);
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: white;
+        }
+
+        .logo-text {
+            line-height: 1.2;
+        }
+
+        .logo-text .university-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-text .university-sub {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .brand-icon {
+            font-size: 3rem;
+            color: #ff8c38;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: rgba(255,255,255,0.05);
+            width: 70px;
+            height: 70px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-panel h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .brand-panel h1 span {
+            color: #ff8c38;
+            font-weight: 700;
+            display: block;
+            font-size: 2rem;
+            margin-top: 0.3rem;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            border-left: 3px solid #ff8c38;
+            padding-left: 1rem;
+            line-height: 1.5;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .author-badge {
+            margin-top: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255,255,255,0.06);
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+            width: fit-content;
+        }
+
+        .author-badge i {
+            font-size: 2rem;
+            color: #ff8c38;
+        }
+
+        .author-badge p {
+            font-weight: 500;
+        }
+        .author-badge small {
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        /* panel kanan – download + password */
+        .download-panel {
+            flex: 1.3 1 400px;
+            padding: 3rem 2.8rem;
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(6px);
+        }
+
+        .download-panel h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1e2b3c;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.3rem;
+            word-break: break-word;
+        }
+
+        .download-panel h2 i {
+            color: #ff8c38;
+            font-size: 2rem;
+        }
+
+        .file-info {
+            background: rgba(30, 43, 60, 0.05);
+            border-radius: 100px;
+            padding: 0.8rem 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.2rem 0 2.2rem 0;
+            font-weight: 500;
+            border: 1px dashed rgba(255,140,56,0.5);
+            word-break: break-word;
+            flex-wrap: wrap;
+        }
+
+        .file-info i {
+            color: #ff8c38;
+            font-size: 1.2rem;
+        }
+
+        .secure-note {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(0,112,243,0.05);
+            padding: 0.9rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2.5rem;
+            color: #1e2b3c;
+            font-size: 0.95rem;
+            border: 1px solid rgba(0,112,243,0.2);
+        }
+
+        .secure-note i {
+            color: #0070f3;
+            font-size: 1.2rem;
+        }
+
+        /* download button */
+        .download-button {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .btn-download {
+            background: #ff8c38;
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 18px rgba(255,140,56,0.3);
+            border: 2px solid transparent;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: #f57c20;
+            transform: scale(1.05);
+            box-shadow: 0 10px 24px rgba(255,140,56,0.4);
+        }
+        
+        .btn-download:active {
+            transform: scale(0.98);
+        }
+
+        .btn-download i {
+            font-size: 1.5rem;
+        }
+
+        /* Link ke halaman esai */
+        .essay-link {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .essay-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255, 140, 56, 0.1);
+            color: #ff8c38;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #ff8c38;
+            transition: all 0.3s;
+        }
+        
+        .essay-link a:hover {
+            background: #ff8c38;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,140,56,0.3);
+        }
+        
+        .essay-link a i {
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+            color: #5e6f7e;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
+            word-break: break-all;
+        }
+        .footer-links a:hover {
+            color: #ff8c38;
+        }
+
+        .success-message {
+            color: #2e7d32;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(46,125,50,0.1);
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="shape-blob"></div>
+    <div class="shape-blob2"></div>
+
+    <div class="card">
+        <div class="card-inner">
+            <!-- left side : human centered design branding dengan logo Cakrawala University -->
+            <div class="brand-panel">
+                <div>
+                    <!-- Logo Cakrawala University dengan gambar -->
+                    <div class="university-logo">
+                        <div class="logo-image">
+                            <img src="logo-cakrawala-v2.webp" alt="Cakrawala University" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'logo-icon\' style=\'width:60px;height:60px;background:linear-gradient(135deg, #ff8c38, #ff6b6b);border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:bold;color:white;\'>CU</div>'">
+                        </div>
+                        <div class="logo-text">
+                            <div class="university-name">Cakrawala University</div>
+                           
+                        </div>
+                    </div>
+
+                    <div class="brand-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h1>Human Centered <span>Design</span></h1>
+                    <div class="tagline">
+                       Analisis Pengalaman Pengguna Aplikasi <br>Transportasi Online untuk Mahasiswa
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="author-badge">
+                        <i class="fas fa-user-graduate"></i>
+                        <div>
+                            <p>Dimas Kurniawan</p>
+                            <small>25120300016 · Ilmu Komputer</small>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7;">
+                        <i class="fas fa-download" style="margin-right: 8px;"></i> download File
+                    </div>
+                </div>
+            </div>
+
+            <!-- right side : download panel -->
+            <div class="download-panel">
+                <h2>
+                    <i class="fas fa-file-pdf"></i> 
+                    Tugas_Kel2_Aplikasi_Transportasi_Online_untuk_Mahasiswa
+                </h2>
+                <div class="file-info">
+                    <i class="fas fa-check-circle"></i> 
+                    <span>Tugas_Kel2_Aplikasi_Transportasi_Online_untuk_Mahasiswa</span>
+                    <span style="background: #ff8c38; color:white; padding:4px 12px; border-radius:40px;">.pdf</span>
+                </div>
+
+                <div class="secure-note">
+                    <i class="fas fa-unlock-alt"></i>
+                    <span>Akses terbuka — download file langsung tanpa verifikasi.</span>
+                </div>
+
+                <!-- download button -->
+                <div class="download-button">
+                    <a href="https://dimask016.github.io/hcd02-tugas02" 
+                       download="Tugas_Kel2_Aplikasi_Transportasi_Online_untuk_Mahasiswa.pdf" 
+                       class="btn-download" 
+                       target="_blank">
+                        <i class="fas fa-download"></i> Download File
+                    </a>
+                </div>
+
+                <!-- Link ke halaman esai ChromeOS -->
+                <div class="essay-link">
+                    <a href="esai-chromeos.html" target="_blank">
+                        <i class="fas fa-file-alt"></i> Baca Esai Lengkap (HTML)
+                    </a>
+                </div>
+
+                <!-- footer links -->
+                <div class="footer-links">
+                    <a href="#" id="githubMockLink"><i class="fab fa-github"></i> https://dimask016.github.io/hcd02-tugas02/</a>
+                    <a href="esai-chromeos.html"><i class="fas fa-file-pdf"></i> Laporan Riset Pengguna Aplikasi Transportasi Online</a>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tambahkan pesan sukses setelah download
+        document.querySelector('.btn-download').addEventListener('click', function() {
+            setTimeout(function() {
+                const successDiv = document.createElement('div');
+                successDiv.className = 'success-message';
+                successDiv.innerHTML = '<i class="fas fa-check-circle"></i> ✅ Download dimulai! Terima kasih.';
+                
+                const existingSuccess = document.querySelector('.success-message');
+                if (!existingSuccess) {
+                    document.querySelector('.download-button').insertAdjacentElement('afterend', successDiv);
+                    
+                    setTimeout(() => {
+                        successDiv.remove();
+                    }, 5000);
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>
