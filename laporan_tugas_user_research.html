@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Riset UX: Transportasi Online untuk Mahasiswa · Cakrawala University</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f2f6fc;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            color: #1e293b;
+            padding: 2rem 1.5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .laporan-container {
+            max-width: 1100px;
+            width: 100%;
+            background: white;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 28px;
+            padding: 2.8rem 3.2rem;
+            border: 1px solid #e0e8f0;
+        }
+
+        /* Header dengan logo dan judul */
+        .header-laporan {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #0b2b44;
+            padding-bottom: 1.5rem;
+        }
+
+        .logo-univ {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .logo-univ img {
+            width: 75px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 14px rgba(0,20,40,0.2);
+        }
+
+        .judul-utama {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0b2b44;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .identitas-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .info-dosen {
+            background: #e9f0f9;
+            padding: 1rem 2rem;
+            border-radius: 40px;
+            text-align: right;
+        }
+
+        .info-dosen .dosen {
+            font-weight: 700;
+            color: #0b2b44;
+            font-size: 1.2rem;
+        }
+
+        .identitas-mahasiswa {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            text-align: right;
+        }
+
+        /* Kata Pengantar */
+        .pengantar {
+            background: #f1f6fc;
+            padding: 2rem 2.2rem;
+            border-radius: 30px;
+            margin: 2rem 0;
+            border-left: 8px solid #2c4c6b;
+        }
+
+        .pengantar h3 {
+            color: #002b4a;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .pengantar p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Abstrak */
+        .abstrak {
+            background: #ecf3fa;
+            padding: 2rem 2.2rem;
+            border-radius: 30px;
+            margin: 2rem 0;
+            border-left: 8px solid #1f5e8e;
+        }
+
+        .abstrak h3 {
+            color: #002b4a;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .abstrak p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .kata-kunci {
+            font-weight: 600;
+            color: #004080;
+            margin-top: 1rem;
+        }
+
+        /* Daftar Isi */
+        .daftar-isi {
+            margin: 2.2rem 0;
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 24px;
+            border: 1px solid #cdddec;
+        }
+
+        .daftar-isi h3 {
+            font-size: 1.6rem;
+            color: #1e3a5f;
+            margin-bottom: 1rem;
+            border-bottom: 2px dashed #8ba3c7;
+            padding-bottom: 0.5rem;
+        }
+
+        .daftar-isi ul {
+            columns: 2;
+            list-style-type: none;
+        }
+
+        .daftar-isi li {
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .daftar-isi a {
+            text-decoration: none;
+            color: #1f3b5c;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* BAB */
+        .bab {
+            margin-top: 3rem;
+        }
+
+        .bab h2 {
+            font-size: 2rem;
+            color: #0a1f33;
+            border-left: 12px solid #345e88;
+            padding-left: 1.2rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .sub-bab {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            color: #1f4870;
+        }
+
+        .sub-bab-3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.8rem 0;
+            color: #25567b;
+        }
+
+        /* Tabel */
+        .tabel-analisis {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.98rem;
+        }
+
+        .tabel-analisis th {
+            background: #1d3d5c;
+            color: white;
+            padding: 12px 8px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .tabel-analisis td, .tabel-analisis th {
+            border: 1px solid #bacfeb;
+            padding: 10px 8px;
+        }
+
+        .tabel-analisis tr:nth-child(even) {
+            background: #f1f7fe;
+        }
+
+        /* Tabel spesifikasi ala contoh */
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .spec-table th {
+            background: #1d3d5c;
+            color: white;
+            padding: 8px 4px;
+        }
+
+        .spec-table td {
+            padding: 8px 4px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Kutipan */
+        .quote-box {
+            background: #fcf8e7;
+            border-left: 6px solid #e6b422;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            margin: 1.8rem 0;
+            font-style: italic;
+        }
+
+        /* Insight box */
+        .insight-box {
+            background: #e3f0fc;
+            border-radius: 24px;
+            padding: 1.5rem 2rem;
+            margin: 1.8rem 0;
+            border-left: 6px solid #1f6d2f;
+        }
+
+        /* footer */
+        .footer-laporan {
+            margin-top: 3rem;
+            border-top: 2px solid #0b2b44;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 1rem;
+            color: #2d4d74;
+        }
+
+        .ttd {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .laporan-container { padding: 1.5rem; }
+            .header-laporan { flex-direction: column; align-items: flex-start; }
+            .identitas-wrapper { align-items: flex-start; width: 100%; }
+            .info-dosen { text-align: left; width: 100%; }
+            .daftar-isi ul { columns: 1; }
+        }
+    </style>
+</head>
+<body>
+<div class="laporan-container">
+
+    <!-- HEADER dengan logo Cakrawala University -->
+    <div class="header-laporan">
+        <div class="logo-univ">
+            <img src="logo-cakrawala-v2.webp" alt="Cakrawala University" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; color:#a00; font-style:italic;">[Logo tidak ditemukan]</div>
+            <div>
+                <div class="judul-utama">ANALISIS PENGALAMAN PENGGUNA<br>APLIKASI TRANSPORTASI ONLINE UNTUK MAHASISWA</div>
+                <div style="font-size:1rem; color:#2f5575;">Studi Kasus: Gojek/Grab untuk Mahasiswa · Fokus: Sulit menemukan driver saat jam sibuk</div>
+            </div>
+        </div>
+        <div class="identitas-wrapper">
+            <div class="identitas-mahasiswa">
+                <strong>Dimas Kurniawan</strong> – 25120300016<br>
+                <span style="font-size:0.95rem;">Kelas: HCD02 – Human Centered Design</span>
+            </div>
+            <div class="info-dosen">
+                <div class="dosen"><i class="fas fa-chalkboard-teacher"></i> Dr. Fandy Neta, S.Pd., M.Pd.T.</div>
+                <div>Dosen Pengajar</div>
+                <div style="font-size:0.9rem;">Ilmu Komputer – 2026</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KATA PENGANTAR -->
+    <div class="pengantar">
+        <h3><i class="fas fa-feather-alt"></i> KATA PENGANTAR</h3>
+        <p>Puji syukur kami panjatkan ke hadirat Allah SWT, karena berkat rahmat dan karunia-Nya, laporan berjudul "Analisis Pengalaman Pengguna Aplikasi Transportasi Online untuk Mahasiswa: Studi Kasus Gojek/Grab untuk Mahasiswa Fokus Riset Permasalahan Sulit Menemukan Driver Saat Jam Sibuk" ini dapat diselesaikan dengan baik. Laporan ini disusun sebagai bagian dari pemenuhan tugas mata kuliah Human Centered Design (HCD02), sekaligus sebagai upaya untuk menerapkan prinsip-prinsip riset pengguna dalam konteks permasalahan nyata yang dihadapi mahasiswa.</p>
+        <p>Perkembangan teknologi transportasi online telah mengubah mobilitas masyarakat, terutama mahasiswa. Namun, di balik kemudahan tersebut, terdapat tantangan signifikan saat jam sibuk dimana pengguna kesulitan mendapatkan driver. Riset ini hadir sebagai respons terhadap kebutuhan untuk memahami secara mendalam pengalaman, frustrasi, dan kebutuhan pengguna, khususnya mahasiswa, dalam menggunakan layanan Gojek/Grab.</p>
+        <p>Melalui pendekatan wawancara pengguna (user interview), riset ini menggali pengalaman nyata responden, mengidentifikasi titik-titik frustrasi, dan merumuskan insight serta rekomendasi perbaikan UX yang diharapkan dapat menjadi masukan bagi pengembang aplikasi untuk menciptakan solusi yang lebih berpusat pada manusia.</p>
+        <p>Kami mengucapkan terima kasih kepada Dosen Pengampu, Dr. Fandy Neta, S.Pd., M.Pd.T., yang telah memberikan bimbingan, masukan, dan ilmu selama proses pembelajaran dan penyusunan laporan ini. Terima kasih juga kepada responden yang telah bersedia meluangkan waktu untuk berbagi pengalaman.</p>
+        <p>Kami menyadari bahwa laporan ini masih memiliki ruang untuk penyempurnaan. Oleh karena itu, kritik dan saran yang membangun sangat kami harapkan untuk perbaikan di masa mendatang. Semoga laporan ini dapat memberikan manfaat dan kontribusi, baik sebagai bahan pembelajaran maupun sebagai referensi dalam pengembangan aplikasi yang lebih humanis.</p>
+        <div style="margin-top:1.5rem;">
+            Hormat kami,<br><br>
+            <strong>Dimas Kurniawan</strong><br>
+            NIM 25120300016
+        </div>
+    </div>
+
+    <!-- ABSTRAK -->
+    <div class="abstrak">
+        <h3><i class="fas fa-book-open"></i> ABSTRAK</h3>
+        <p>Laporan ini menyajikan analisis pengalaman pengguna aplikasi transportasi online (Gojek/Grab) dengan fokus pada permasalahan sulitnya menemukan driver saat jam sibuk. Riset dilakukan terhadap satu responden mahasiswa aktif (Fadly, Ilmu Komputer semester 2, frekuensi penggunaan 3-4 kali/minggu) menggunakan metode wawancara pengguna. Temuan menunjukkan bahwa waktu tunggu lama dan surge pricing menjadi sumber utama kecemasan dan kekesalan. Pengguna melakukan berbagai strategi adaptif seperti membuka multi-aplikasi, cancel berulang, dan mengubah titik jemput. Kebutuhan utama yang terungkap adalah kepastian (certainty), di mana pengguna bersedia membayar Rp20-30rb/bulan untuk jaminan prioritas. Insight utama: "Mahasiswa butuh KEPASTIAN di tengah KETIDAKPASTIAN jam sibuk." Rekomendasi meliputi fitur advanced booking, sistem prioritas berlangganan, dan notifikasi prediktif.</p>
+        <p class="kata-kunci"><i class="fas fa-tags"></i> Kata Kunci: pengalaman pengguna, transportasi online, jam sibuk, mahasiswa, Gojek, Grab, wawancara pengguna, kepastian, surge pricing</p>
+    </div>
+
+    <!-- DAFTAR ISI (mengikuti struktur file PDF) -->
+    <div class="daftar-isi">
+        <h3><i class="fas fa-list-ul"></i> DAFTAR ISI</h3>
+        <ul>
+            <li><a href="#bab1"><i class="fas fa-caret-right"></i> BAB 1 – PENDAHULUAN</a></li>
+            <li><a href="#bab2"><i class="fas fa-caret-right"></i> BAB 2 – METODOLOGI RISET</a></li>
+            <li><a href="#bab3"><i class="fas fa-caret-right"></i> BAB 3 – DAFTAR PERTANYAAN & JAWABAN</a></li>
+            <li><a href="#bab4"><i class="fas fa-caret-right"></i> BAB 4 – ANALISIS TEMUAN</a></li>
+            <li><a href="#bab5"><i class="fas fa-caret-right"></i> BAB 5 – INSIGHT PENGGUNA</a></li>
+            <li><a href="#bab6"><i class="fas fa-caret-right"></i> BAB 6 – REKOMENDASI</a></li>
+            <li><a href="#bab7"><i class="fas fa-caret-right"></i> BAB 7 – KESIMPULAN</a></li>
+            <li><a href="#lampiran"><i class="fas fa-caret-right"></i> LAMPIRAN</a></li>
+        </ul>
+    </div>
+
+    <!-- BAB 1 PENDAHULUAN -->
+    <div class="bab" id="bab1">
+        <h2>BAB 1 – PENDAHULUAN</h2>
+        
+        <div class="sub-bab">1.1 Latar Belakang</div>
+        <p>Mahasiswa merupakan salah satu kelompok pengguna terbesar layanan transportasi online seperti Gojek dan Grab, terutama untuk mobilitas ke kampus. Namun, pada jam-jam sibuk (peak hours), banyak mahasiswa mengalami kesulitan mendapatkan driver. Hal ini menyebabkan keterlambatan, kecemasan, dan pengalaman negatif lainnya.</p>
+
+        <div class="sub-bab">1.2 Tujuan Riset</div>
+        <ul style="margin-left:2rem; margin-bottom:1rem;">
+            <li>Memahami perilaku mahasiswa saat memesan transportasi online di jam sibuk</li>
+            <li>Mengidentifikasi faktor-faktor frustrasi yang dialami pengguna</li>
+            <li>Menyusun insight berdasarkan pengalaman nyata pengguna</li>
+            <li>Memberikan rekomendasi perbaikan UX yang relevan</li>
+        </ul>
+
+        <div class="sub-bab">1.3 Objek Riset</div>
+        <ul style="margin-left:2rem;">
+            <li>Aplikasi: Gojek dan Grab</li>
+            <li>Responden: Mahasiswa aktif pengguna aktif transportasi online</li>
+        </ul>
+    </div>
+
+    <!-- BAB 2 METODOLOGI RISET -->
+    <div class="bab" id="bab2">
+        <h2>BAB 2 – METODOLOGI RISET</h2>
+        
+        <div class="sub-bab">2.1 Teknik Riset</div>
+        <p>Penelitian ini menggunakan teknik Wawancara Pengguna (User Interview) karena sesuai untuk menggali pengalaman mendalam, memahami titik kesulitan, serta mengetahui motivasi dan kebutuhan tersembunyi pengguna.</p>
+
+        <div class="sub-bab">2.2 Profil Responden</div>
+        <table class="tabel-analisis">
+            <tr><th>Nama</th><th>Jurusan</th><th>Semester</th><th>Frekuensi Penggunaan</th></tr>
+            <tr><td>Fadly</td><td>Ilmu Komputer</td><td>2</td><td>3-4 kali/minggu</td></tr>
+        </table>
+
+        <div class="sub-bab">2.3 Waktu dan Tempat</div>
+        <p>Wawancara dilakukan secara daring pada tanggal 10 Maret 2026, dengan durasi 20 menit.</p>
+    </div>
+
+    <!-- BAB 3 DAFTAR PERTANYAAN & JAWABAN -->
+    <div class="bab" id="bab3">
+        <h2>BAB 3 – DAFTAR PERTANYAAN WAWANCARA & JAWABAN</h2>
+        
+        <div class="sub-bab">3.1 Bagian 1: Pembukaan & Pertanyaan Mudah</div>
+        <table class="tabel-analisis">
+            <tr><th>No</th><th>Pertanyaan</th><th>Jawaban Responden (Fadly)</th></tr>
+            <tr><td>1</td><td>Ceritakan sedikit tentang diri Anda, nama, jurusan, dan semester berapa?</td><td>"Nama saya Fadly, saya mahasiswa jurusan Ilmu Komputer semester 2."</td></tr>
+        </table>
+
+        <div class="sub-bab">3.2 Bagian 2: Memahami Penggunaan & Pengalaman Umum</div>
+        <table class="tabel-analisis">
+            <tr><th>No</th><th>Pertanyaan</th><th>Jawaban Responden (Fadly)</th></tr>
+            <tr><td>2</td><td>Seberapa sering dalam seminggu Anda menggunakan transportasi online untuk ke kampus atau keperluan kuliah lainnya?</td><td>"Bisa 3-4 kali seminggu. Paling sering pas pagi-pagi kalau mepet waktu, atau pas hujan. Kadang juga buat balik kos kalau sore udah capek."</td></tr>
+        </table>
+
+        <div class="sub-bab">3.3 Bagian 3: Menggali Perilaku Saat Jam Sibuk</div>
+        <table class="tabel-analisis">
+            <tr><th>No</th><th>Pertanyaan</th><th>Jawaban Responden (Fadly)</th></tr>
+            <tr><td>3</td><td>Ceritakan saat terakhir kali Anda mengalami kesulitan mencari driver di jam sibuk.</td><td>"Minggu lalu, pas Senin pagi. Udah jam 7.20, saya pesen Gojek nggak dapet-dapet. Udah muter-muter terus tulisannya 'mencari driver di sekitarmu'."</td></tr>
+        </table>
+
+        <div class="sub-bab">3.4 Bagian 4: Menggali Titik Frustrasi (Pain Points)</div>
+        <table class="tabel-analisis">
+            <tr><th>No</th><th>Pertanyaan</th><th>Jawaban Responden (Fadly)</th></tr>
+            <tr><td>4</td><td>Apa yang Anda rasakan selama menunggu driver di jam sibuk?</td><td>"Cemas, khawatir, takut telat. Apalagi kalau udah mepet jam kuliah. Jengkel juga karena udah nunggu lama tapi nggak dapet-dapet."</td></tr>
+            <tr><td>5</td><td>Apa yang biasanya Anda lakukan ketika aplikasi menunjukkan 'sedang mencari driver' terlalu lama?</td><td>"Saya cancel, terus coba lagi. Atau ganti ke aplikasi lain. Kadang saya juga coba ubah titik jemput dikit, maju sedikit atau mundur, siapa tau dapat."</td></tr>
+            <tr><td>6</td><td>Bagaimana perasaan Anda ketika melihat harga melonjak tinggi (surge pricing) di jam sibuk? Apa yang Anda lakukan?</td><td>"Kesel, rasanya 'ih kok mahal banget'. Kadang saya pilih nunggu bentar, siapa tau turun. Tapi kalau udah mepet, ya terpaksa bayar."</td></tr>
+        </table>
+
+        <div class="sub-bab">3.5 Bagian 6: Menggali Peluang Perbaikan & Ide Solusi</div>
+        <table class="tabel-analisis">
+            <tr><th>No</th><th>Pertanyaan</th><th>Jawaban Responden (Fadly)</th></tr>
+            <tr><td>7</td><td>Apakah Anda bersedia membayar sedikit lebih mahal atau berlangganan fitur tertentu jika ada jaminan mendapatkan driver lebih cepat di jam sibuk? Mengapa?</td><td>"Bersedia, asalkan harganya masuk akal. Mungkin bayar langganan bulanan Rp 20-30rb, yang penting ada jaminan prioritas di jam sibuk. Lumayan daripada tiap hari stress."</td></tr>
+            <tr><td>8</td><td>Jika Anda bisa mengubah satu hal dari aplikasi transportasi online agar lebih membantu di jam sibuk, hal apa yang akan Anda ubah?</td><td>"Saya pengen ada fitur yang bisa 'reserve' atau pesan dari jauh-jauh hari. Jadi kita bisa pesen dari malam untuk besok pagi, udah fix dapet driver."</td></tr>
+            <tr><td>9</td><td>Ceritakan lebih banyak tentang ide itu. Menurut Anda, bagaimana seharusnya fitur itu bekerja?</td><td>"Misalnya kita bisa booking di malam hari untuk esok pagi jam 7. Kita bayar sedikit deposit, nanti drivernya udah pasti jemput. Jadi nggak panik pagi-pagi."</td></tr>
+            <tr><td>10</td><td>Bagaimana perasaan Anda jika fitur itu tersedia?</td><td>"Seneng banget, pasti lega. Pagi-pagi nggak perlu stress mikir 'dapet driver nggak ya'."</td></tr>
+        </table>
+
+        <div class="sub-bab">3.6 Problem Statement Berbasis Data</div>
+        <p>Berdasarkan hasil wawancara dengan responden Fadly, mahasiswa Ilmu Komputer semester 2 yang menggunakan transportasi online 3-4 kali per minggu, ditemukan permasalahan signifikan terkait aksesibilitas layanan di jam sibuk.</p>
+        <p><strong>Data menunjukkan:</strong></p>
+        <ul style="margin-left:2rem;">
+            <li><strong>Frekuensi masalah:</strong> Responden mengalami kesulitan mencari driver setiap minggu, dengan kejadian terakhir pada Senin pagi pukul 07.20.</li>
+            <li><strong>Durasi tunggu:</strong> Proses mendapatkan driver memakan waktu lama dengan indikasi "mencari driver di sekitarmu" yang berulang.</li>
+            <li><strong>Dampak emosional:</strong> Pengguna merasakan cemas, khawatir, takut telat, dan jengkel saat menunggu driver.</li>
+            <li><strong>Perilaku adaptif:</strong> Pengguna melakukan cancel berulang, berpindah aplikasi, dan mengubah titik jemput sebagai strategi mengatasi masalah.</li>
+            <li><strong>Dampak finansial:</strong> Pengguna merasa kesel dan terbebani saat menghadapi surge pricing, namun terpaksa membayar karena kondisi mepet waktu.</li>
+        </ul>
+    </div>
+
+    <!-- BAB 4 ANALISIS TEMUAN -->
+    <div class="bab" id="bab4">
+        <h2>BAB 4 – ANALISIS TEMUAN</h2>
+        
+        <div class="sub-bab">4.1 Pola Perilaku Pengguna</div>
+        <table class="tabel-analisis">
+            <tr><th>Aspek Perilaku</th><th>Temuan dari Responden</th></tr>
+            <tr><td>Frekuensi Penggunaan</td><td>3-4 kali seminggu, terutama saat mepet waktu atau hujan</td></tr>
+            <tr><td>Waktu Pemesanan</td><td>Pesan saat sudah siap berangkat (tidak prepone)</td></tr>
+            <tr><td>Respon Loading Lama</td><td>Cancel, coba lagi, ganti aplikasi, ubah titik jemput</td></tr>
+            <tr><td>Respon Surge Pricing</td><td>Kesal, kadang menunggu, tapi terpaksa bayar jika mepet</td></tr>
+        </table>
+
+        <div class="sub-bab">4.2 Faktor Frustrasi (Pain Points)</div>
+        <table class="tabel-analisis">
+            <tr><th>Faktor Frustrasi</th><th>Deskripsi</th><th>Dampak Emosional</th></tr>
+            <tr><td>Waktu tunggu lama</td><td>Menunggu >10 menit di jam sibuk</td><td>Cemas, khawatir, jengkel</td></tr>
+            <tr><td>Tidak ada driver</td><td>Aplikasi terus mencari tanpa hasil</td><td>Cemas, takut telat</td></tr>
+            <tr><td>Surge pricing tinggi</td><td>Harga melonjak drastis</td><td>Kesel, stress finansial</td></tr>
+        </table>
+
+        <div class="sub-bab">4.3 Kebutuhan Pengguna</div>
+        <table class="tabel-analisis">
+            <tr><th>Kebutuhan</th><th>Pernyataan Responden</th></tr>
+            <tr><td>Kepastian (certainty)</td><td>Ingin ada jaminan dapet driver dan tepat waktu</td></tr>
+            <tr><td>Kecepatan (speed)</td><td>Tidak ingin menunggu lama di jam sibuk</td></tr>
+            <tr><td>Harga wajar (fair pricing)</td><td>Harga surge pricing terasa memberatkan</td></tr>
+            <tr><td>Kontrol (control)</td><td>Ingin bisa memesan dari jauh hari untuk antisipasi</td></tr>
+        </table>
+    </div>
+
+    <!-- BAB 5 INSIGHT PENGGUNA -->
+    <div class="bab" id="bab5">
+        <h2>BAB 5 – INSIGHT PENGGUNA</h2>
+        
+        <div class="quote-box">
+            <i class="fas fa-quote-left" style="font-size:1.5rem; color:#a5721e;"></i>
+            <p style="font-size:1.2rem; font-weight:600;">"Mahasiswa butuh KEPASTIAN di tengah KETIDAKPASTIAN jam sibuk. Mereka rela membayar lebih atau berlangganan asalkan ada jaminan tidak telat kuliah."</p>
+        </div>
+
+        <div class="sub-bab">5.1 Insight Spesifik</div>
+        <table class="tabel-analisis">
+            <tr><th>Insight</th><th>Deskripsi</th></tr>
+            <tr><td>1. Multi-app behavior</td><td>Pengguna membuka lebih dari satu aplikasi untuk mencari solusi tercepat</td></tr>
+            <tr><td>2. Antisipasi kegagalan</td><td>Pengguna melakukan berbagai strategi (cancel, ganti titik, ganti aplikasi) untuk mengatasi kegagalan mendapatkan driver</td></tr>
+            <tr><td>3. Kesiapan membayar untuk kepastian</td><td>Responden bersedia membayar Rp20-30rb/bulan untuk jaminan prioritas di jam sibuk</td></tr>
+            <tr><td>4. Kebutuhan fitur antisipatif</td><td>Fitur booking dari jauh hari dianggap sebagai solusi ideal untuk mengurangi kecemasan pagi hari</td></tr>
+        </table>
+    </div>
+
+    <!-- BAB 6 REKOMENDASI -->
+    <div class="bab" id="bab6">
+        <h2>BAB 6 – REKOMENDASI & PELUANG PERBAIKAN</h2>
+        
+        <div class="sub-bab">6.1 Rekomendasi Fitur</div>
+        <table class="tabel-analisis">
+            <tr><th>No</th><th>Peluang Perbaikan</th><th>Deskripsi</th><th>Dasar Insight</th></tr>
+            <tr><td>1</td><td>Fitur Advanced Booking (Reservasi)</td><td>Memesan perjalanan dari H-1 (misal malam untuk pagi) dengan deposit kecil</td><td>Pengguna ingin kepastian dan antisipasi ("pesen dari malam untuk besok pagi")</td></tr>
+            <tr><td>2</td><td>Sistem Prioritas Berlangganan</td><td>Langganan bulanan (Rp20-30rb) untuk prioritas mendapatkan driver di jam sibuk</td><td>Pengguna rela bayar untuk jaminan ("daripada tiap hari stress")</td></tr>
+            <tr><td>3</td><td>Notifikasi Prediktif</td><td>Peringatan dini tentang potensi kesulitan driver di jam sibuk berdasarkan data historis</td><td>Membantu pengguna mengantisipasi sejak awal</td></tr>
+        </table>
+
+        <div class="sub-bab">6.2 Rekomendasi Perbaikan UX</div>
+        <table class="tabel-analisis">
+            <tr><th>Aspect</th><th>Rekomendasi</th></tr>
+            <tr><td>Estimasi Waktu</td><td>Buat estimasi lebih realistis dengan mempertimbangkan jam sibuk</td></tr>
+            <tr><td>Komunikasi</td><td>Beri informasi proaktif tentang kemungkinan keterlambatan</td></tr>
+            <tr><td>Transparansi Harga</td><td>Jelaskan faktor penyebab surge pricing agar pengguna lebih memahami</td></tr>
+        </table>
+    </div>
+
+    <!-- BAB 7 KESIMPULAN -->
+    <div class="bab" id="bab7">
+        <h2>BAB 7 – KESIMPULAN</h2>
+        <p>Riset ini mengungkapkan bahwa mahasiswa pengguna transportasi online menghadapi tantangan signifikan di jam sibuk, terutama dalam hal kepastian mendapatkan driver. Berdasarkan wawancara dengan responden Fadly, ditemukan bahwa:</p>
+        <ol style="margin-left:2rem; margin-bottom:1rem;">
+            <li><strong>Perilaku:</strong> Pengguna aktif mencari solusi dengan membuka multiple aplikasi dan mencoba berbagai strategi saat mengalami kesulitan.</li>
+            <li><strong>Frustrasi:</strong> Waktu tunggu lama dan surge pricing menjadi sumber utama kecemasan dan kekesalan.</li>
+            <li><strong>Kebutuhan:</strong> Kepastian menjadi prioritas utama, bahkan pengguna bersedia membayar lebih untuk mendapatkannya.</li>
+            <li><strong>Solusi yang diharapkan:</strong> Fitur reservasi dari jauh hari dan sistem prioritas berlangganan.</li>
+        </ol>
+        <p>Peluang perbaikan utama adalah pengembangan fitur advanced booking dan sistem prioritas berlangganan yang dapat memberikan kepastian bagi mahasiswa di jam-jam sibuk.</p>
+    </div>
+
+    <!-- LAMPIRAN -->
+    <div class="bab" id="lampiran">
+        <h2>LAMPIRAN: LEMBAR CATATAN WAWANCARA</h2>
+        <p><strong>Responden:</strong> Fadly | <strong>Tanggal:</strong> 10 Maret 2026 | <strong>Durasi:</strong> 20 menit</p>
+        
+        <table class="tabel-analisis">
+            <tr><th>Aspect</th><th>Catatan</th></tr>
+            <tr><td>Perilaku yang diamati</td><td>Membuka aplikasi, cancel, coba lagi, ganti aplikasi, ubah titik jemput</td></tr>
+            <tr><td>Perasaan yang diungkapkan</td><td>Cemas, khawatir, jengkel, kesel, lega (jika fitur tersedia)</td></tr>
+            <tr><td>Titik kesulitan</td><td>Waktu tunggu lama, surge pricing, tidak ada driver</td></tr>
+            <tr><td>Kebutuhan yang terungkap</td><td>Kepastian, kecepatan, harga wajar, kontrol</td></tr>
+        </table>
+
+        <div class="quote-box">
+            <p><strong>Kutipan penting:</strong></p>
+            <ul style="margin-left:1.5rem;">
+                <li>"Cemas, khawatir, takut telat"</li>
+                <li>"Kesel, rasanya 'ih kok mahal banget'"</li>
+                <li>"Bersedia bayar langganan daripada tiap hari stress"</li>
+                <li>"Pesen dari malam untuk besok pagi, udah fix dapat driver"</li>
+            </ul>
+        </div>
+        
+        <p><strong>Insight awal:</strong> Butuh kepastian, rela bayar untuk jaminan, ingin fitur antisipatif.</p>
+    </div>
+
+    <!-- Tanda tangan / penutup -->
+    <div class="ttd">
+        <div>
+            Hormat saya,<br><br><br>
+            <strong>Dimas Kurniawan</strong><br>
+            NIM 25120300016
+        </div>
+        <div>
+            Cakrawala University<br>
+            Maret 2026
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-laporan">
+        <p><i class="fas fa-laptop-code"></i> Tugas HCD02 – Human Centered Design | Program Studi Ilmu Komputer | Cakrawala University</p>
+        <p>Dosen Pengampu: Dr. Fandy Neta, S.Pd., M.Pd.T.</p>
+    </div>
+</div>
+</body>
+</html>
